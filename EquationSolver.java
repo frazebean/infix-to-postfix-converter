@@ -11,7 +11,6 @@ public class EquationSolver
         System.out.print("Enter your equation: ");
         equation = input.nextLine();
 
-        System.out.print("Your answer is: ");
         System.out.println(solve(equation));
 
         input.close();
@@ -112,6 +111,7 @@ public class EquationSolver
             finalResult = (double)evalStack.pop();
         }
 
+        System.out.print("Your answer is: ");
         return finalResult;
     }
     private static double executeOperation(char operator, double operand1, double operand2)
