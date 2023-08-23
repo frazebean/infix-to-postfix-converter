@@ -30,40 +30,47 @@ public class EquationSolver
 
         Object openBracket = '(';
 
-        for(int i = 0; i < infix.length; i++)
+        try
         {
-            char term = infix[i].charAt(0);
+            for(int i = 0; i < infix.length; i++)
+            {
+                char term = infix[i].charAt(0);
 
-            if(term == '(')
-            {
-                operatorStack.push('(');
-            }
-            else if(term == ')')
-            {
-                while(operatorStack.top() != openBracket)
+                if(term == '(')
                 {
-                    postfix.enqueue(operatorStack.pop());
+                    operatorStack.push('(');
                 }
-                operatorStack.pop();
-            }
-            else if((term == '+') || (term == '-') || (term == '*') || (term == '/'))
-            {
-                while(!(operatorStack.isEmpty()) && (operatorStack.top() != openBracket)
-                && (precedenceOf((char)operatorStack.top())) >= (precedenceOf(term)))
+                else if(term == ')')
                 {
-                    postfix.enqueue(operatorStack.pop());
+                    while(operatorStack.top() != openBracket)
+                    {
+                        postfix.enqueue(operatorStack.pop());
+                    }
+                    operatorStack.pop();
                 }
-                operatorStack.push(term);
+                else if((term == '+') || (term == '-') || (term == '*') || (term == '/'))
+                {
+                    while(!(operatorStack.isEmpty()) && (operatorStack.top() != openBracket)
+                    && (precedenceOf((char)operatorStack.top())) >= (precedenceOf(term)))
+                    {
+                        postfix.enqueue(operatorStack.pop());
+                    }
+                    operatorStack.push(term);
+                }
+                else
+                {
+                    double value = Double.valueOf(infix[i]);
+                    postfix.enqueue(value);
+                }
             }
-            else
+            while(!(operatorStack.isEmpty()))
             {
-                double value = Double.valueOf(infix[i]);
-                postfix.enqueue(value);
+                postfix.enqueue(operatorStack.pop());
             }
         }
-        while(!(operatorStack.isEmpty()))
+        catch(Exception error)
         {
-            postfix.enqueue(operatorStack.pop());
+            System.out.println("Invalid expression!");
         }
 
         return postfix;
@@ -85,33 +92,40 @@ public class EquationSolver
     private static double evaluatePostfix(ShuffleQueue postfix)
     {
         DSAStack evalStack = new DSAStack();
-
-        for(int i = 0; i < (postfix.queue).length; i++)
-        {
-            Object postfixElement = postfix.queue[i];
-
-            if(postfixElement instanceof Double)
-            {
-                evalStack.push(postfixElement);
-            }
-            else if(postfixElement instanceof Character)
-            {
-                char operator = (char)postfixElement;
-
-                double num1 = (double)evalStack.pop();
-                double num2 = (double)evalStack.pop();
-                double result = executeOperation(operator, num1, num2);
-                evalStack.push(result);
-            }
-        }
-        
         double finalResult = 0;
-        if(evalStack.getCount() == 1)
-        {
-            finalResult = (double)evalStack.pop();
-        }
 
-        System.out.print("Your answer is: ");
+        try
+        {
+            for(int i = 0; i < (postfix.queue).length; i++)
+            {
+                Object postfixElement = postfix.queue[i];
+
+                if(postfixElement instanceof Double)
+                {
+                    evalStack.push(postfixElement);
+                }
+                else if(postfixElement instanceof Character)
+                {
+                    char operator = (char)postfixElement;
+
+                    double num1 = (double)evalStack.pop();
+                    double num2 = (double)evalStack.pop();
+                    double result = executeOperation(operator, num1, num2);
+                    evalStack.push(result);
+                }
+            }
+            
+            if(evalStack.getCount() == 1)
+            {
+                finalResult = (double)evalStack.pop();
+            }
+
+            System.out.print("Your answer is: ");
+        }
+        catch(Exception error)
+        {
+            System.out.println("Invalid expression!");
+        }
         return finalResult;
     }
     private static double executeOperation(char operator, double operand1, double operand2)
