@@ -55,7 +55,7 @@ public class DSAShufflingQueue
     {
         if(isFull())
         {
-            throw new ArrayIndexOutOfBoundsException("Queue is full!");
+            throw new ArrayIndexOutOfBoundsException("Shuffling queue is full!");
         }
         else
         {
@@ -70,7 +70,7 @@ public class DSAShufflingQueue
 
         if(isEmpty())
         {
-            throw new IndexOutOfBoundsException("Queue is empty!");
+            throw new IndexOutOfBoundsException("Shuffling queue is empty!");
         }
         else
         {
@@ -93,7 +93,7 @@ public class DSAShufflingQueue
 
         if(isEmpty())
         {
-            throw new IndexOutOfBoundsException("Queue is empty!");
+            throw new IndexOutOfBoundsException("Shuffling queue is empty!");
         }
         else
         {
