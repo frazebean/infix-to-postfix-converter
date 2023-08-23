@@ -17,15 +17,15 @@ public class EquationSolver
     }
     public static double solve(String equation)
     {
-        ShuffleQueue postfixFormat = parseInfixToPostfix(equation);
+        CircularQueue postfixFormat = parseInfixToPostfix(equation);
         double finalResult = evaluatePostfix(postfixFormat);
 
         return finalResult;
     }
-    private static ShuffleQueue parseInfixToPostfix(String equation)
+    private static CircularQueue parseInfixToPostfix(String equation)
     {
         DSAStack operatorStack = new DSAStack();
-        ShuffleQueue postfix = new ShuffleQueue();
+        CircularQueue postfix = new CircularQueue();
         String[] infix = equation.split(" ");
 
         Object openBracket = '(';
@@ -89,7 +89,7 @@ public class EquationSolver
         return value;
     }
 
-    private static double evaluatePostfix(ShuffleQueue postfix)
+    private static double evaluatePostfix(CircularQueue postfix)
     {
         DSAStack evalStack = new DSAStack();
         double finalResult = 0;
