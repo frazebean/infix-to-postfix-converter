@@ -112,7 +112,7 @@ public class DSACircularQueue
         return frontValue;
     }
 
-    public void printCircularQueue()
+    public void printQueue()
     {
         for(int i = 0; i < queue.length; i++)
         {
