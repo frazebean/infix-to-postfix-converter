@@ -1,3 +1,13 @@
+/* NOTE: The following links in the credits below are external links that helped
+ * me understand the material more as well as implementing the code for this practical.
+ */
+
+// Credit #1: https://www.youtube.com/watch?v=jXMqVpAVyMY&t=233s
+// Credit #2: https://www.youtube.com/watch?v=Ue3VrbsTw9M
+// Credit #3: https://www.w3schools.com/java/java_inheritance.asp
+// Credit #4: https://piazza.com/class/lkcdg8v73hq4v/post/52
+
+
 import java.util.*;
 
 public class EquationSolver 
