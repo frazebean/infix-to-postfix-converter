@@ -1,8 +1,20 @@
+import java.util.*;
+
 public class EquationSolver 
 {
     public static void main(String[] args) 
     {
-        System.out.println(solve("( 10.3 * ( 14 + 3.2 ) ) / ( 5 + 2 - 4 * 3 )"));
+        Scanner input = new Scanner(System.in);
+
+        String equation;
+
+        System.out.print("Enter your equation: ");
+        equation = input.nextLine();
+
+        System.out.print("Your answer is: ");
+        System.out.println(solve(equation));
+
+        input.close();
     }
     public static double solve(String equation)
     {
