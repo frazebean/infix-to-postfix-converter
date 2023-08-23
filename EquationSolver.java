@@ -53,6 +53,63 @@ public class EquationSolver
         }
         
         postfix.printQueue();
+
+        DSAStack evalStack = new DSAStack();
+
+        Character plus = '+';
+        Character minus = '-';
+        Character multiply = '*';
+        Character divide = '/';
+
+        for(int i = 0; i < (postfix.queue).length; i++)
+        {
+            Object postfixElement = postfix.queue[i];
+
+            if((postfixElement != plus) && (postfixElement != minus) &&
+            (postfixElement != multiply) && (postfixElement != divide) && !(postfixElement.equals("")))
+            {
+                evalStack.push(postfixElement);
+            }
+            else
+            {
+                char operator = 'a';
+
+                if(postfixElement instanceof Character)
+                {
+                    operator = (char)postfixElement;
+                }
+
+                double num1 = (double)evalStack.pop();
+                double num2 = (double)evalStack.pop();
+                double result = executeOperation(operator, num1, num2);
+                evalStack.push(result);
+            }
+        }
+
+        evalStack.printStack();
+    }
+
+    public static double executeOperation(char operator, double operand1, double operand2)
+    {
+        double result = 0;
+
+        if(operator == '+')
+        {
+            result = operand1 + operand2;
+        }
+        else if(operator == '-')
+        {
+            result = operand1 - operand2;
+        }
+        else if(operator == '*')
+        {
+            result = operand1 * operand2;
+        }
+        else if(operator == '/')
+        {
+            result = operand1 / operand2;
+        }
+        return result;
     }
 
     public static int precedenceOf(char theOperator)

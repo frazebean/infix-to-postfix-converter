@@ -74,12 +74,10 @@ public class DSAStack
         }
         else
         {
-
             topVal = top();
             count = count - 1;
             stack[count] = null;
         }
-
         return topVal;
     }
     // Accessor 'top'
