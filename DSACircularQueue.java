@@ -1,7 +1,7 @@
 public class DSACircularQueue 
 {
     // Class fields
-    private Object[] circularQueue;
+    private Object[] queue;
     private int count;
     private int front = -1;
     private int rear = -1;
@@ -12,13 +12,13 @@ public class DSACircularQueue
     // Default constructor
     public DSACircularQueue()
     {
-        circularQueue = new Object[DEFAULT_CAPACITY];
+        queue = new Object[DEFAULT_CAPACITY];
         count = 0;
     }
     // Parameter/Alternate constructor
     public DSACircularQueue(int maxCapacity)
     {
-        circularQueue = new Object[maxCapacity];
+        queue = new Object[maxCapacity];
         count = 0;
     }
 
@@ -44,7 +44,7 @@ public class DSACircularQueue
     {
         boolean full = false;
 
-        if(count == circularQueue.length)
+        if(count == queue.length)
         {
             full = true;
         }
@@ -61,13 +61,13 @@ public class DSACircularQueue
         }
         else
         {
-            if(rear == circularQueue.length-1)
+            if(rear == queue.length-1)
             {
                 rear = -1;
             }
 
             rear = rear + 1;
-            circularQueue[rear] = value;
+            queue[rear] = value;
             count = count + 1;
         }
     }
@@ -80,13 +80,13 @@ public class DSACircularQueue
         }
         else
         {
-            if(front == circularQueue.length-1)
+            if(front == queue.length-1)
             {
                 front = -1;
             }
 
             front = front + 1;
-            circularQueue[front] = null;
+            queue[front] = null;
             count = count - 1;
         }
     }
@@ -101,12 +101,12 @@ public class DSACircularQueue
         }
         else
         {
-            if(front == circularQueue.length-1)
+            if(front == queue.length-1)
             {
                 front = -1;
             }
             
-            frontValue = circularQueue[front+1];
+            frontValue = queue[front+1];
         }
 
         return frontValue;
@@ -114,9 +114,9 @@ public class DSACircularQueue
 
     public void printCircularQueue()
     {
-        for(int i = 0; i < circularQueue.length; i++)
+        for(int i = 0; i < queue.length; i++)
         {
-            System.out.print(circularQueue[i] + " ");
+            System.out.print(queue[i] + " ");
         }
         System.out.println();
     }
