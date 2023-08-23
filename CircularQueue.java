@@ -1,13 +1,13 @@
-public class DSACircularQueue extends DSAQueue
+public class CircularQueue extends DSAQueue
 {
     // Class constructor
-    public DSACircularQueue()
+    public CircularQueue()
     {
         queue = new Object[DEFAULT_CAPACITY];
         count = 0;
     }
     // Parameter/Alternate constructor
-    public DSACircularQueue(int maxCapacity)
+    public CircularQueue(int maxCapacity)
     {
         queue = new Object[maxCapacity];
         count = 0;

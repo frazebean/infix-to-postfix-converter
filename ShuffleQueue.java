@@ -1,13 +1,13 @@
-public class DSAShuffleQueue extends DSAQueue
+public class ShuffleQueue extends DSAQueue
 {
     // Class constructor
-    public DSAShuffleQueue()
+    public ShuffleQueue()
     {
         queue = new Object[DEFAULT_CAPACITY];
         count = 0;
     }
     // Parameter/Alternate constructor
-    public DSAShuffleQueue(int maxCapacity)
+    public ShuffleQueue(int maxCapacity)
     {
         queue = new Object[maxCapacity];
         count = 0;

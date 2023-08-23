@@ -2,12 +2,19 @@ public class Test
 {
     public static void main(String[] args) 
     {
-        DSACircularQueue circularQueue = new DSACircularQueue(3);
+        ShuffleQueue shuffleQueue = new ShuffleQueue(3);
 
-        circularQueue.enqueue(23);
-        circularQueue.enqueue("ho");
+        shuffleQueue.enqueue(3);
+        shuffleQueue.enqueue(5);
 
-        System.out.println(circularQueue.getCount());
-        circularQueue.printQueue();
+        shuffleQueue.dequeue();
+
+        shuffleQueue.enqueue(3);
+        shuffleQueue.enqueue(7);
+
+        shuffleQueue.dequeue();
+    
+        System.out.println(shuffleQueue.peek());
+        shuffleQueue.printQueue();
     }   
 }

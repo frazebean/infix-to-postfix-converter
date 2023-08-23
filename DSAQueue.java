@@ -44,6 +44,10 @@ public class DSAQueue
     {
         for(int i = 0; i < queue.length; i++)
         {
+            if(queue[i] == null)
+            {
+                queue[i] = "";
+            }
             System.out.print(queue[i] + " ");
         }
         System.out.println();
