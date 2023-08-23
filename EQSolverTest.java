@@ -1,20 +1,11 @@
-public class EquationSolver 
+public class EQSolverTest 
 {
     public static void main(String[] args) 
     {
-        System.out.println(solve("( 10.3 * ( 14 + 3.2 ) ) / ( 5 + 2 - 4 * 3 )"));
-    }
-    public static double solve(String equation)
-    {
-        ShuffleQueue postfixFormat = parseInfixToPostfix(equation);
-        double finalResult = evaluatePostfix(postfixFormat);
-
-        return finalResult;
-    }
-    private static ShuffleQueue parseInfixToPostfix(String equation)
-    {
         DSAStack operatorStack = new DSAStack();
         ShuffleQueue postfix = new ShuffleQueue();
+
+        String equation = "( 10.3 * ( 14 + 3.2 ) ) / ( 5 + 2 - 4 * 3 )";
         String[] infix = equation.split(" ");
 
         Object openBracket = '(';
@@ -50,14 +41,69 @@ public class EquationSolver
                 postfix.enqueue(value);
             }
         }
+
         while(!(operatorStack.isEmpty()))
         {
             postfix.enqueue(operatorStack.pop());
         }
 
-        return postfix;
+        DSAStack evalStack = new DSAStack();
+
+        Character plus = '+';
+        Character minus = '-';
+        Character multiply = '*';
+        Character divide = '/';
+
+        for(int i = 0; i < (postfix.queue).length; i++)
+        {
+            Object postfixElement = postfix.queue[i];
+
+            if((postfixElement != plus) && (postfixElement != minus) &&
+            (postfixElement != multiply) && (postfixElement != divide) && !(postfixElement.equals("")))
+            {
+                evalStack.push(postfixElement);
+            }
+            else
+            {
+                char operator = 'a';
+
+                if(postfixElement instanceof Character)
+                {
+                    operator = (char)postfixElement;
+                }
+
+                double num1 = (double)evalStack.pop();
+                double num2 = (double)evalStack.pop();
+                double result = executeOperation(operator, num1, num2);
+                evalStack.push(result);
+            }
+        }
     }
-    private static int precedenceOf(char theOperator)
+
+    public static double executeOperation(char operator, double operand1, double operand2)
+    {
+        double result = 0;
+
+        if(operator == '+')
+        {
+            result = operand1 + operand2;
+        }
+        else if(operator == '-')
+        {
+            result = operand1 - operand2;
+        }
+        else if(operator == '*')
+        {
+            result = operand1 * operand2;
+        }
+        else if(operator == '/')
+        {
+            result = operand1 / operand2;
+        }
+        return result;
+    }
+
+    public static int precedenceOf(char theOperator)
     {
         int value = 0;
         if((theOperator == '+') || (theOperator == '-'))
@@ -69,59 +115,5 @@ public class EquationSolver
             value = 2;
         }
         return value;
-    }
-
-    private static double evaluatePostfix(ShuffleQueue postfix)
-    {
-        DSAStack evalStack = new DSAStack();
-
-        for(int i = 0; i < (postfix.queue).length; i++)
-        {
-            Object postfixElement = postfix.queue[i];
-
-            if(postfixElement instanceof Double)
-            {
-                evalStack.push(postfixElement);
-            }
-            else if(postfixElement instanceof Character)
-            {
-                char operator = (char)postfixElement;
-
-                double num1 = (double)evalStack.pop();
-                double num2 = (double)evalStack.pop();
-                double result = executeOperation(operator, num1, num2);
-                evalStack.push(result);
-            }
-        }
-        
-        double finalResult = 0;
-        if(evalStack.getCount() == 1)
-        {
-            finalResult = (double)evalStack.pop();
-        }
-
-        return finalResult;
-    }
-    private static double executeOperation(char operator, double operand1, double operand2)
-    {
-        double result = 0.0;
-
-        if(operator == '+')
-        {
-            result = operand2 + operand1;
-        }
-        else if(operator == '-')
-        {
-            result = operand2 - operand1;
-        }
-        else if(operator == '*')
-        {
-            result = operand2 * operand1;
-        }
-        else if(operator == '/')
-        {
-            result = operand2 / operand1;
-        }
-        return result;
     }
 }
