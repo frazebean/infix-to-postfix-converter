@@ -68,7 +68,7 @@ public class TestProgram
         System.out.println("Third dequeue: " + thirdDequeue);
 
         System.out.print("\nAfter popping: ");
-        shuffleQueue.printQueue();;
+        shuffleQueue.printQueue();
         System.out.println("Count: " + shuffleQueue.getCount());
         System.out.println("Top: " + shuffleQueue.peek());
     }
@@ -100,7 +100,7 @@ public class TestProgram
         System.out.println("Third dequeue: " + thirdDequeue);
 
         System.out.print("\nAfter popping: ");
-        circularQueue.printQueue();;
+        circularQueue.printQueue();
         System.out.println("Count: " + circularQueue.getCount());
         System.out.println("Top: " + circularQueue.peek());
     }
