@@ -2,8 +2,10 @@ public class TestProgram
 {
     public static void main(String[] args) 
     {
-        //testDSAStack();
-        //testShuffleQueue();
+        testDSAStack();
+        System.out.println();
+        testShuffleQueue();
+        System.out.println();
         testCircularQueue();
     }
 
@@ -75,7 +77,7 @@ public class TestProgram
     {
         CircularQueue circularQueue = new CircularQueue(5);
 
-        System.out.println("Queue operation (Shuffle):");
+        System.out.println("Queue operation (Circular):");
 
         circularQueue.enqueue(8);
         circularQueue.enqueue("Cow");
