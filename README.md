@@ -38,5 +38,7 @@ You must type:
 
 _( 54 + 3 ) * 2_
 
+**Note how there are spaces between every character.**
+
 This is because the string being entered is parsed for every space character. Not a very elegant solution, but this is
 what was recommended by my assignment sheet and I do this all for grades :D
