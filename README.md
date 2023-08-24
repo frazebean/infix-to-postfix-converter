@@ -21,4 +21,3 @@ Weird, I know. But it is a great notation for postfix.
 
 My program converts from infix to postfix notation, then also evaluates the postfix notation to give an actual result. I wrote this program for a small university assignment, but decided to upload it to GitHub since I really like how this program works. The program utilises stacks and queues, which is a concept I am learning (thus demonstrating
 in my program).
-
