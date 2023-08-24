@@ -33,14 +33,18 @@ public class CircularQueue extends DSAQueue
         }
     }
     // Mutator 'dequeue'
-    public void dequeue()
+    public Object dequeue()
     {
+        Object frontValue;
+
         if(isEmpty())
         {
             throw new IndexOutOfBoundsException("Circular queue is empty!");
         }
         else
         {
+            frontValue = peek();
+
             if(front == queue.length-1)
             {
                 front = -1;
@@ -50,6 +54,8 @@ public class CircularQueue extends DSAQueue
             queue[front] = null;
             count = count - 1;
         }
+
+        return frontValue;
     }
     // Accessor 'peek'
     public Object peek()
